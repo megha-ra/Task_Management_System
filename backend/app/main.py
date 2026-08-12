@@ -1,10 +1,17 @@
 from fastapi import FastAPI
-from .database import test_db_connection
 
+from .routers.auth import router as auth_router
 
-app = FastAPI(title="Task Management API")
-test_db_connection()
+app = FastAPI(
+    title="Task Management System",
+    version="1.0.0",
+)
+
+app.include_router(auth_router)
+
 
 @app.get("/")
 def root():
-    return {"message": "Task Management API"}
+    return {
+        "message": "Task Management System API is running"
+    }
