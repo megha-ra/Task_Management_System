@@ -13,8 +13,10 @@ router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 
 @router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED, summary="Register a new user")
+
 def register_user(payload: UserRegister, db: Session = Depends(get_db)):
-    """Create a user account and return a JWT for immediate sign-in."""
+
+    ##Create a user account and return a JWT for immediate sign-in.
     if db.query(User).filter(User.email == payload.email.lower()).first():
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="An account with this email already exists")
     user = User(name=payload.name.strip(), email=payload.email.lower(), hashed_password=hash_password(payload.password))
@@ -35,5 +37,5 @@ def login_user(payload: UserLogin, db: Session = Depends(get_db)):
 
 @router.get("/me", response_model=UserResponse, summary="Get the current user")
 def read_current_user(current_user: User = Depends(get_current_user)):
-    """Return the user identified by the supplied JWT."""
+    ##Return the user identified by the supplied JWT.
     return current_user
