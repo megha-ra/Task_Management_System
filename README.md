@@ -24,21 +24,6 @@ The Smart Task is a full-stack task management application designed to help user
 - **Authentication:** JWT(JSON Web Tokens)
 
 ------------------------------------------------------------------------
-## Architecture
-flowchart LR
-    U["User"] --> F["React + Vite Frontend"]
-
-    F -->|HTTP REST + JWT| B["FastAPI Backend"]
-
-    B --> A["Authentication"]
-    B --> T["Task Service"]
-    B --> AI["AI Suggestion Service"]
-
-    A --> DB["SQLAlchemy"]
-    T --> DB
-
-    DB --> N["Neon PostgreSQL"]
-
 
 ## Project Structure
 
