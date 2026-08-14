@@ -20,6 +20,14 @@ export default function TaskForm({
 
   useEffect(() => setTask(editingTask ? 
     { ...editingTask, due_date: editingTask.due_date || "" } : emptyTask), [editingTask]);
+  
+    /** Update a single task field. */
+  function updateField(key, value) {
+    setTask((current) => ({
+      ...current,
+      [key]: value,
+    }));
+  }
 
   /** Submit normalized task data to the parent page. */
   function submit(event) { 
@@ -59,7 +67,7 @@ export default function TaskForm({
                 </select>
 
                 <input
-                    placeholder="Category or tag"
+                    placeholder="Category"
                     value={task.category}
                     onChange={(event) =>
                         updateField("category", event.target.value)

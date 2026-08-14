@@ -19,7 +19,7 @@ export default function TaskCard({
             </div>
             <div className="meta">
                 <span className={`badge priority-${task.priority.toLowerCase()}`}>{task.priority}</span>
-                {task.category && <span>#{task.category}</span>}
+                {task.category && <span>{task.category}</span>}
                 {task.due_date && <span className={overdue ? "overdue" : ""}>Due {task.due_date}{overdue ? " (overdue)" : ""}</span>}
             </div>
             <div className="actions">
