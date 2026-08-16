@@ -1,6 +1,5 @@
 /** Get the configured backend base URL. */
-const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
-
+const API_URL = import.meta.env.VITE_BACKEND_API_URL || "http://localhost:8000";
 /** Make an API request and return JSON when the response contains it. */
 export async function apiRequest(path, options = {}) {
   const token = localStorage.getItem("smart_tasks_token");
